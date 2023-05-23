@@ -1,0 +1,62 @@
+{% extends 'userheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown"> Complaint Status</h2>
+<br>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table align="center">
+    {% if cmp %}
+   <tr>
+    <th>Station Name</th>
+    <th>Complainted Date</th>
+    <th>Subject</th>
+    <th>Complaint</th>
+    <th>Status</th>
+   </tr>
+    {% for x in cmp %}
+    <tr>
+        
+        <td>{{x.sid.name}}</td>
+        <td>{{x.cdate}}</td>
+        <td>{{x.comptitle}}</td>
+        <td>{{x.desc}}</td>
+        {% if x.status != 'registered' %}
+        {% if cu %}
+        <td><a href='/userviewcomplaintresponse?id={{x.id}}'>View Updates</a></td>
+        {% endif %}
+        {% else %}
+        <td>{{x.status}}</td>
+        {% endif %}   
+    </tr> 
+    {% endfor %} 
+
+    {% else %}
+    
+   <center><h1>No Data Found</h1></center>
+    {% endif %}
+</table>
+
+
+{% endblock %}

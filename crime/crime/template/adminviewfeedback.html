@@ -1,0 +1,45 @@
+
+
+{%  extends 'adminheader.html' %}
+{% block content1 %}
+<html>
+        <script src="../static/js/jquery.js"></script>
+    <h2 align="center" style="color:brown">Feedback</h2>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        
+<table class="customers">
+    <tr>
+            <th>Customer</th>
+            <th>Phone</th>
+            <th>Feedback</th>
+            <th>Posted Date</th>                  
+                             
+           
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.4}}
+            </td>
+            <td>
+                {{x.5}}
+            </td>
+            <td>
+                {{x.2}}
+            </td>
+            <td>
+                {{x.3}}
+            </td>
+           {% endfor %} 
+             
+              </tr> 
+        
+        </table>
+</form>
+<br>
+<br>
+
+{% endblock %}

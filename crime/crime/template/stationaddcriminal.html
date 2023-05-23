@@ -1,0 +1,99 @@
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+  {% if messages %}
+  {% for msg in messages %}
+  <script>alert('{{msg}}');</script>
+  {% endfor %}
+  {% endif %}
+    <br>
+    <head><h2 align="center" style="color: brown;">Criminal Details</h2></head>
+    <style>
+
+      .btn{
+      background-color:green;
+      color:white;
+      }
+      .form-control{
+      width:300px;
+      background-color:black;
+      color:white;
+      
+      }
+      .first{
+        display:flex;
+        margin-left:40%;
+      }
+      
+      </style>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+
+
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="name" class="form-control" pattern="[a-zA-Z]+" title="Enter characters  only" required/></td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td><input type="text" name="age" class="form-control" pattern="[0-9]{2}" title="Enter 2 digits only" required/></td>
+    </tr>
+    <tr>
+      <td>Height(in cm)</td>
+      <td><input type="text" name="height" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Weight(in kg)</td>
+      <td><input type="text" name="weight" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><input name="r1" type="radio" value="male" />
+      Male
+      <input name="r1" type="radio" value="female" />
+      Female</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td><textarea name="addr" class="form-control" required></textarea></td>
+    </tr>
+    <tr>
+      <td>Phone Number </td>
+      <td><input type="text" name="phno" required pattern="[0-9]{10}" required title="Enter 10 digits only" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Nickname</td>
+      <td><input type="text" name="nickname" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Mode of operation </td>
+      <td><select name="mode" class="form-control">
+        <option value="Robery">Robery</option>
+        <option value="Snatching">Snatching</option>
+        <option value="Crushing">Crushing</option>
+        <option value="Cheating">Cheating</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Identification mark </td>
+      <td><input type="text" name="idmark" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><input type="file" name="f1" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Thumb Impression</td>
+      <td><input type="file" name="f11" class="form-control" required/></td>
+    </tr>
+    <tr><td><br></td></tr>
+<tr><td><input type="submit" name="sub" value="Submit" style="background-color:green;color:white;margin-left:150%"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

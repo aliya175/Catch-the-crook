@@ -1,0 +1,48 @@
+{% extends 'adminheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown"> Station Details</h2>
+<br>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table align="center">
+   <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th colspan="2">Contact</th>
+   </tr>
+    {% for x in data %}
+    <tr>
+        
+        <td>{{x.name}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.contact}}</td>    
+    </tr>         
+    {% endfor %} 
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'userheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown">Punishments</h2>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert('{{msg}}');</script>
+{% endfor %}
+{% endif %}            
+<table class="customers">
+<tr>
+    <th>FIRID</th>
+    <th>Complaint</th>
+    <th>Petitionar</th>
+    <th>Criminal</th>
+    <th>Hearing Date</th>
+</tr>
+    
+    {% for x in data %}
+    <tr>
+        
+        <td>{{x.firid.id}}</td>
+        <td>{{x.firid.cid.desc}}</td>
+        <td>{{x.firid.cid.pid.name}}</td>
+        <td>{{x.firid.crid.name}}</td>
+        <td>{{x.heardate}}</td>
+        </tr> 
+    {% endfor %} 
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</form>
+{% endblock %}

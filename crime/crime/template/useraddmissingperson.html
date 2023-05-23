@@ -1,0 +1,64 @@
+{%  extends 'userheader.html' %}
+{% block content1 %}
+<html>
+    <style>
+    .btn{
+        background-color:green;
+        color:white;
+        margin-left:60%;
+        }  
+    tr td{
+        padding-top:10px;
+    }    
+     
+    </style>  
+        {% if messages %}
+        {% for msg in messages %}
+        <script>alert('{{msg}}');</script>
+        {% endfor %}
+        {% endif %}
+      
+    <br>
+    <head><h2 align="center" style="color: brown;">Add Missing Persons</h2></head>
+    <style>
+
+        .btn{
+        background-color:green;
+        color:white;
+        }
+        .form-control{
+        width:300px;
+        background-color:black;
+        color:white;
+        
+        }
+        .first{
+          display:flex;
+          margin-left:40%;
+        }
+        
+        </style>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+
+<tr><td> Name:</td><td><input type="text" name="name"></td></tr>
+<tr><td> address:</td><td><input type="text" name="address"></td></tr>
+<tr><td> contact:</td><td><input type="text" name="contact"></td></tr>
+<tr><td> Description:</td><td><input type="text" name="identification"></td></tr>
+<tr><td> EstHeight:</td><td><input type="text" name="estheight"></td></tr>
+<tr><td> EstWeight:</td><td><input type="text" name="estweight"></td></tr>
+<tr><td> Physic:</td><td><input type="text" name="physic"></td></tr>
+<tr><td> Missing Date</td><td><input type="date" name="missdate"></td></tr>
+<tr><td> Place of Missing:</td><td><input type="text" name="missplace"></td></tr>
+<tr><td> Photo:</td><td><input type="file" name="photo"></td></tr>
+
+<tr><td><input type="submit" name="sub" class="btn" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

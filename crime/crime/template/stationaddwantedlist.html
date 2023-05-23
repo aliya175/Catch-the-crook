@@ -1,0 +1,45 @@
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+    <br>
+    <head><h2 align="center" style="color: brown;">Wanted List Details</h2></head>
+    <style>
+
+        .btn{
+        background-color:green;
+        color:white;
+        }
+        .form-control{
+        width:300px;
+        background-color:black;
+        color:white;
+        
+        }
+        .first{
+          display:flex;
+          margin-left:40%;
+        }
+        
+        </style>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="150">
+            <br>
+            <br>
+
+
+    <tr><td> Select Criminal:</td><td><select name="dis" class="form-control">
+    <option>--Select Criminal--</option>
+    {% for d in data %}
+ <option value="{{d.id}}" >{{d.name}}</option>
+{% endfor %}
+   
+</select></td></tr>
+ 
+<tr><td><input type="submit" name="subf" value="Submit" style="background-color:green;color:white;margin-left:100%"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

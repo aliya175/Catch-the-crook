@@ -1,0 +1,81 @@
+
+
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+        <script src="../static/js/jquery.js"></script>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+
+<br>
+    <h2 align="center" style="color:brown">Crimie Details</h2>
+ <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table class="customers">
+    <tr>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Location</th>                  
+            <th>IPC Section</th>  
+            <th>Victim Name</th>  
+            <th>Suspect Name</th>                 
+           <th>File</th>  
+           
+          
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.1}}
+            </td>
+            <td>
+                {{x.2}}
+            </td>
+            <td>
+                {{x.3}}
+            </td>
+            <td>
+                {{x.4}}
+            </td>
+             <td>
+                {{x.5}}
+            </td>
+             <td>
+                {{x.6}}
+            </td>
+         <td>
+                {{x.7}}
+            </td>
+            <td>
+                <a href="../{{x.8}}">{{x.8}}</a>
+            </td>
+           {% endfor %} 
+             
+              </tr> 
+        
+        </table>
+</form>
+<br>
+<br>
+
+{% endblock %}

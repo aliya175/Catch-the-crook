@@ -1,0 +1,44 @@
+{%  extends 'userheader.html' %}
+{% block content1 %}
+<html>
+    <br>
+    <head><h2 align="center" style="color: brown;">Add Feedback</h2></head>
+    <style>
+
+        .btn{
+        background-color:green;
+        color:white;
+        }
+        .form-control{
+        width:300px;
+        background-color:black;
+        color:white;
+        
+        }
+        .first{
+          display:flex;
+          margin-left:40%;
+        }
+        
+        </style>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+
+<tr><td> Station:</td><td><select name="dis">
+{% for d in data %}
+    <option>--Select Station--</option>
+    <option value={{d.1}}>{{d.1}}</option>
+</select></td></tr>
+<tr><td> Feedback Title:</td><td><input type="text" name="tit"></td></tr>
+<tr><td> Description:</td><td><input type="text" name="desc1"></td></tr>
+
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

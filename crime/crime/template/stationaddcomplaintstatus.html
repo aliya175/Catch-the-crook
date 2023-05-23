@@ -1,0 +1,64 @@
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+  {% if messages %}
+  {% for msg in messages %}
+  <script>alert('{{msg}}');</script>
+  {% endfor %}
+  {% endif %}
+    <br>
+    <head><h2 align="center" style="color: brown;">Criminal Details</h2></head>
+    <style>
+
+      .btn{
+      background-color:green;
+      color:white;
+      }
+      .form-control{
+      width:300px;
+      background-color:black;
+      color:white;
+      
+      }
+      .first{
+        display:flex;
+        margin-left:40%;
+      }
+      
+      </style>
+
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+{% if data %}
+    <tr>
+      <td>Subject</td>
+      <td><input type="text" name="sub" class="form-control"  value="{{data.comptitle}}" readonly/></td>
+    </tr>
+    <tr>
+      <td>Complaint</td>
+      <td><input type="text" name="comp" class="form-control"  value="{{data.desc}}" readonly/></td>
+    </tr>
+    <tr>
+      <td>Updates</td>
+      <td><input type="text" name="upd" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Update Status</td>
+      <td><input name="r1" type="radio" value="onprogress" />
+      Onprogress
+      <input name="r1" type="radio" value="completed" />
+      Completed
+      </td>
+    </tr>
+    {% endif %}
+    <tr><td><br></td></tr>
+<tr><td><input type="submit" name="sub" value="Submit" style="background-color:green;color:white;margin-left:150%"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

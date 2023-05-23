@@ -1,0 +1,104 @@
+
+
+{%  extends 'courtheader.html' %}
+{% block content1 %}
+<html>
+        <script src="../static/js/jquery.js"></script>
+        <br>
+        <br>
+    <h2 align="center" style="color:brown">Search</h2>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+<table align="center">
+<tr>
+<td>
+Search Fir</td><td><input type="text" name="search"  class="form-control"> 
+</td>
+</tr>
+<tr>
+</tr>
+<td></td>
+<td><input type="submit" name="searchcr"  > 
+</td>
+</tr>
+</table>
+<br>
+    <h2 align="center" style="color:brown">FIR Details</h2>
+ <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table class="customers">
+    <tr>
+            <th>FirId</th>
+            <th>Complaint</th>
+            <th>Description</th>
+            <th>Fir Date</th>                  
+            <th>Law Applied</th>  
+            <th>Details</th>  
+            <th>Petitioner</th>                 
+           <th>Criminal</th>    
+           <th>Photo</th>    
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.firid.id}}
+            </td>
+            <td>
+                {{x.firid.cid.comptitle}}
+            </td>
+            <td>
+                {{x.firid.cid.desc}}
+            </td>
+           
+             <td>
+                {{x.firid.date}}
+            </td>
+             <td>
+                {{x.firid.lawapplied}}
+            </td>
+         <td>
+                {{x.firid.details}}
+            </td>
+            <td>
+                {{x.firid.cid.pid.name}}
+            </td>
+            <td>
+                {{x.firid.crid.name}}
+            </td>
+            <td>
+  <img src='static/media/{{x.firid.crid.photo}}'  class="img-responsive" width="100px" height="100px">  
+  </td>
+  {%  if  x.id not in p %}
+  <td>
+    <a href='/courtaddpunishment?id={{x.firid.id}}'>ADD Punishment</a>  
+</td>  
+    {% endif %}
+           {% endfor %} 
+             
+              </tr> 
+        
+        </table>
+</form>
+<br>
+<br>
+
+{% endblock %}

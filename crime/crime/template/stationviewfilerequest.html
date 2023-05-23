@@ -1,0 +1,67 @@
+{% extends 'stationheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown"> Requested Files</h2>
+<br>
+<br>
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert('{{msg}}');</script>
+{% endfor %}
+{% endif %}
+
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table align="center">
+    {% if fr %}
+   <tr>
+    <th>Station Name</th>
+    <th>Requested Date</th>
+    <th>Request</th>
+    <th>Status</th>
+   </tr>
+    {% for x in fr %}
+    <tr>
+        
+        <td>{{x.receiver.name}}</td>
+        <td>{{x.fdate}}</td>
+        <td>{{x.frequest}}</td>
+        {% if x.status != 'requested' %}
+        <td>{{x.status}}</td>
+        {% else %}
+        <td>
+            <a href='/stationaddfile?id={{x.id}}'>Add Response</a>
+        </td>
+        {% endif %}   
+    </tr> 
+    {% endfor %} 
+
+    {% else %}
+    
+   <center><h1>No Data Found</h1></center>
+    {% endif %}
+</table>
+
+
+{% endblock %}

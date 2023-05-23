@@ -1,0 +1,46 @@
+{%  extends 'adminheader.html' %}
+{% block content1 %}
+<html>
+    <style>
+        .form-control{
+
+    width:300px;
+    background-color:black;
+color:white;
+    }
+    input,select,textarea{
+    
+    margin-left:40%;
+    margin-top:10px;
+    }
+    .btn{
+    
+    background-color:green;
+    color:white;
+    margin-left:48%;
+    }
+    </style>
+        {% if messages %}
+        {% for msg in messages %}
+        <script>alert('{{msg}}');</script>
+        {% endfor %}
+        {% endif %}
+
+    <br>
+    <head><h2 align="center" style="color: brown;">Request File</h2></head>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        
+<select name="dis" class="form-control" required>
+    <option>--Select User--</option>
+    {% for d in data %}
+    <option value="{{d.id}}" >{{d.name}}</option>
+    {% endfor %}
+</select>
+<textarea name="sub" class="form-control" required></textarea>
+<input type="submit" name="subfile" value="Submit" class="btn">
+</form>
+<br>
+<br>
+{% endblock %}

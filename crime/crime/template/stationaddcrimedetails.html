@@ -1,0 +1,85 @@
+{% extends 'stationheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown">Crimes</h2>
+<br>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+
+
+.btn{
+background-color:green;
+color:white;
+}
+.form-control{
+width:300px;
+background-color:black;
+color:white;
+
+}
+.first{
+  display:flex;
+  margin-left:40%;
+}
+
+
+            </style>
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert('{{msg}}');</script>
+{% endfor %}
+{% endif %}
+<table align="center">
+    {% if data %}
+   <tr>
+    <th>Id</th>
+    <th>Station</th>
+    <th>Complainter</th>
+    <th>Complaint</th>
+    <th>Description</th>
+    <th colspan="2">Status</th>
+   </tr>
+    {% for x in data %}
+    <tr> 
+        <td>{{x.id}}</td>
+        <td>{{x.sid.name}}</td>
+        <td>{{x.pid.name}}</td>
+        <td>{{x.comptitle}}</td>
+        <td>{{x.desc}}</td>
+        {% if x.id not in d  %}
+        <td><a href='/stationaddfir?id={{x.id}}'>Add Fir</a></td>
+        {% else %}
+        <td>FIR Added</td>
+        {% endif %}   
+    </tr> 
+    {% endfor %} 
+
+    {% else %}
+    
+   <center><h1>No Data Found</h1></center>
+    {% endif %}
+</table>
+
+
+{% endblock %}

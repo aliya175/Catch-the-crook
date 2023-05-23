@@ -1,0 +1,108 @@
+
+
+{%  extends 'adminheader.html' %}
+{% block content1 %}
+<html>
+        <script src="../static/js/jquery.js"></script>
+        <br>
+        <br>
+    <h2 align="center" style="color:brown">Search</h2>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+<table align="center">
+<tr>
+<td>
+Search Criminal</td><td><input type="text" name="search"  class="form-control"> 
+</td>
+</tr>
+<tr>
+</tr>
+<td></td>
+<td><input type="submit" name="searchcr"  > 
+</td>
+</tr>
+</table>
+<br>
+    <h2 align="center" style="color:brown">Criminal Details</h2>
+ <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table class="customers">
+    <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Gender</th>                  
+            <th>Address</th>  
+            <th>Phone Number</th>  
+            <th>Nick Name</th>                 
+           <th>Mode Of Opreation</th>  
+           <th>Identification</th>  
+           <th>Photo</th>  
+           <th>Thumb</th>  
+          
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.name}}
+            </td>
+            <td>
+                {{x.age}}
+            </td>
+            <td>
+                {{x.height}}
+            </td>
+           
+             <td>
+                {{x.gender}}
+            </td>
+             <td>
+                {{x.address}}
+            </td>
+         <td>
+                {{x.contact}}
+            </td>
+            <td>
+                {{x.nickname}}
+            </td>
+            <td>
+                {{x.optype}}
+            </td>
+            <td>
+                {{x.identification}}
+            </td>  
+            <td>
+  <img src='static/media/{{x.photo}}'  class="img-responsive" width="100px" height="100px">  
+  </td>  
+            <td>
+  <img src='static/media/{{x.thumb}}'  class="img-responsive" width="100px" height="100px">  
+            </td>    
+           {% endfor %} 
+             
+              </tr> 
+        
+        </table>
+</form>
+<br>
+<br>
+
+{% endblock %}

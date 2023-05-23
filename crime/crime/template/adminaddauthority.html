@@ -1,0 +1,25 @@
+{%  extends 'adminheader.html' %}
+{% block content1 %}
+<html>
+    <br>
+    <head><h2 align="center" style="color: brown;">Station Registration</h2></head>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+            <tr><td> Authority:</td><td><select name="dis">
+    <option>--Select Authority--</option>
+    <option value="DGP">DGP</option>
+   
+</select></td></tr>
+
+<tr><td> Username:</td><td><input type="text" name="uname"></td></tr>
+<tr><td> Password:</td><td><input type="Password" name="pass"></td></tr>
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,143 @@
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+        <script src="../static/js/jquery.js"></script>
+        <br>
+        <br>
+        <style>
+
+            .btn{
+            background-color:green;
+            color:white;
+            }
+            .form-control{
+            width:300px;
+            background-color:black;
+            color:white;
+            
+            }
+            .first{
+              display:flex;
+              margin-left:40%;
+            }
+            
+            </style>
+    <h2 align="center" style="color:brown">Search</h2>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+<table align="center">
+<tr>
+<td>
+Search mode of operation</td><td><input type="text" name="search"  class="form-control"> 
+</td>
+</tr>
+<tr>
+</tr>
+<td></td>
+<td><input type="submit" name="searchcr"  > 
+</td>
+</tr>
+</table>
+<br>
+    <h2 align="center" style="color:brown">Criminal Details</h2>
+ <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table class="customers">
+    <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Gender</th>                  
+            <th>Address</th>  
+            <th>Phone Number</th>  
+            <th>Nick Name</th>                 
+           <th>Complexion</th>  
+           <th>Crime Type</th>  
+           <th>Mode Of Opreation</th>  
+           <th>Identification</th>  
+           <th>Photo</th>  
+           <th>Thumb</th>  
+           <th>Languages Known</th>  
+           <th>No Of Crime</th>  
+          
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.1}}
+            </td>
+            <td>
+                {{x.2}}
+            </td>
+            <td>
+                {{x.3}}
+            </td>
+           
+             <td>
+                {{x.5}}
+            </td>
+             <td>
+                {{x.6}}
+            </td>
+         <td>
+                {{x.7}}
+            </td>
+            <td>
+                {{x.8}}
+            </td>
+            <td>
+                {{x.9}}
+            </td>
+            <td>
+                {{x.10}}
+            </td> 
+            <td>
+                {{x.11}}
+            </td>  
+            <td>
+                {{x.12}}
+            </td>  
+            <td>
+  <img src='../{{x.13}}'  class="img-responsive" width="100px" height="100px">  
+  </td>  
+            <td>
+  <img src='../{{x.14}}'  class="img-responsive" width="100px" height="100px">  
+            </td>    
+            <td>
+                {{x.15}}
+            </td>  
+            <td>
+                {{x.16}}
+            </td>  
+            
+            
+
+           {% endfor %} 
+             
+              </tr> 
+        
+        </table>
+</form>
+<br>
+<br>
+
+{% endblock %}

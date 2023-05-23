@@ -1,0 +1,39 @@
+{%  extends 'commonheader.html' %}
+{% block content1 %}
+<style>
+.form-control{
+
+    width:250px;
+    background-color:black;
+color:white;
+}
+input{
+
+    margin-left:43%;
+    margin-top:10px;
+}
+.btn{
+
+    background-color:green;
+    color:white;
+    margin-left:48%;
+}
+</style>
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert('{{msg}}');</script>
+{% endfor %}
+{% endif %}
+    
+    <head>
+    <br><h2 align="center" style="color: brown;">  Login Here</h2></head>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+<input type="text" class="form-control" name="uname" placeholder="Username">
+<input type="Password" class="form-control" name="pswd"placeholder="Password"><br>
+<input type="submit" name="sub" value="Submit" class="btn">
+</form>
+<br>
+{% endblock %}

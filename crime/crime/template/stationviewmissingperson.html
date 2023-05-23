@@ -1,0 +1,82 @@
+{% extends 'stationheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown">Missing Complaint Details</h2>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert('{{msg}}');</script>
+{% endfor %}
+{% endif %}
+
+<table class="customers">
+<tr>
+    <th>Complainter</th>
+    <th>Missing Person</th>
+    <th>Address</th>
+    <th>Contact</th>
+    <th>Photo</th>
+    <th>Missing Date</th>
+    <th>Missing Place</th>
+    <th>Identification</th>
+    <th>Estimated Height</th>
+    <th>Estimated Weight</th>
+    <th>Physic</th>
+    <th colspan="2">Status</th>
+    
+</tr>
+    
+    {% for x in data %}
+    <tr>
+        
+        
+        <td>{{x.pid.name}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.contact}}</td> 
+        <td><img src="static/media/{{x.photo}}" height="150px"width="150px"></img></td>
+        <td>{{x.missdate}}</td>
+        <td>{{x.missplace}}</td>
+        <td>{{x.identification}}</td>
+        <td>{{x.estheight}}</td>
+        <td>{{x.estweight}}</td>
+        <td>{{x.physic}}</td>
+        <td>{{x.status}}</td>
+        <td><a href='/stationaddmisspersonresponse?id={{x.id}}'>Add Response</a></td>
+        
+          </tr> 
+    {% endfor %} 
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</form>
+{% endblock %}

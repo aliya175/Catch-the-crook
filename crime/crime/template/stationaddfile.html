@@ -1,0 +1,40 @@
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+    <br>
+    <head><h2 align="center" style="color: brown;">Add File</h2></head>
+    <style>
+
+        .btn{
+        background-color:green;
+        color:white;
+        }
+        .form-control{
+        width:300px;
+        background-color:black;
+        color:white;
+        
+        }
+        .first{
+          display:flex;
+          margin-left:40%;
+        }
+        
+        </style>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="150">
+            <br>
+            <br>
+            <tr>
+                <td>Add File</td>
+                <td><input type="file" name="f1" class="form-control" required/></td>
+              </tr>
+ 
+<tr><td><input type="submit" name="subf" value="Submit" style="background-color:green;color:white;margin-left:100%"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

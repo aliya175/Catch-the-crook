@@ -1,0 +1,72 @@
+{% extends 'stationheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown"> Complaint Details</h2>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+  {% if messages %}
+  {% for msg in messages %}
+  <script>alert('{{msg}}');</script>
+  {% endfor %}
+  {% endif %}
+<table class="customers">
+<tr>
+    <th>Complainter</th>
+    <th>Address</th>
+    <th>Contact</th>
+    <th>Subject</th>
+    <th>Complaint</th>
+    <th>Complainted Date</th>
+    <th>Identification</th>
+    <th colspan="2">Status</th>
+    
+</tr>
+    
+    {% for x in data %}
+    <tr>
+        
+        
+        <td>{{x.pid.name}}</td>
+        <td>{{x.pid.address}}</td>
+        <td>{{x.pid.contact}}</td>
+        <td>{{x.comptitle}}</td> 
+        <td>{{x.desc}}</td>
+        <td>{{x.cdate}}</td>
+        <td>{{x.identification}}</td>
+        <td>{{x.status}}</td>
+        <td><a href='/stationaddcomplaintresponse?id={{x.id}}'>Add Response</a></td>
+        
+          </tr> 
+    {% endfor %} 
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</form>
+{% endblock %}

@@ -1,0 +1,63 @@
+
+
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+        <script src="../static/js/jquery.js"></script>
+    <h2 align="center" style="color:brown">Files Received</h2>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+  <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>      
+<table align="center">
+    <tr>
+            <th>Station Name</th>
+            <th>Subject</th>
+            <th>File</th>
+            <th>Posted Date</th>                  
+                             
+           
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.6}}
+            </td>
+            <td>
+                {{x.3}}
+            </td>
+            <td>
+                <a href="../{{x.4}}">{{x.4}}</a>
+            </td>
+            <td>
+                {{x.5}}
+            </td>
+           {% endfor %} 
+             
+              </tr> 
+        
+        </table>
+</form>
+<br>
+<br>
+
+{% endblock %}

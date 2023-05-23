@@ -1,0 +1,54 @@
+{% extends 'adminheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown"> Requested Files</h2>
+<br>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+<table align="center">
+    {% if data %}
+   <tr>
+    <th>Station Name</th>
+    <th>Requested Date</th>
+    <th>Request</th>
+    <th>File</th>
+   </tr>
+    {% for x in data %}
+    <tr>
+        
+        <td>{{x.frid.receiver.name}}</td>
+        <td>{{x.frid.fdate}}</td>
+        <td>{{x.frid.frequest}}</td>
+        <td><img src="static/media/{{x.file}}"></img></td>
+    </tr> 
+    {% endfor %} 
+
+    {% else %}
+    
+   <center><h1>No Data Found</h1></center>
+    {% endif %}
+</table>
+
+
+{% endblock %}

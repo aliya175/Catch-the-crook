@@ -1,0 +1,56 @@
+{%  extends 'adminheader.html' %}
+{% block content1 %}
+<style>
+    .form-control{
+
+width:300px;
+background-color:black;
+color:white;
+}
+input,select{
+
+margin-left:40%;
+margin-top:10px;
+}
+.btn{
+
+background-color:green;
+color:white;
+margin-left:48%;
+}
+</style>
+    <br>
+    {% if messages %}
+    {% for msg in messages %}
+    <script>alert('{{msg}}');</script>
+    {% endfor %}
+    {% endif %}
+
+    <body>
+    <h2 align="center" style="color: brown;">Station Registration</h2>
+<form method="POST">
+     {% csrf_token %}
+<br>
+<input type="text" class="form-control" name="name" placeholder="Name" required><br>
+<input type="text" class="form-control" name="addr" placeholder="Address" required><br>
+<input type="text" class="form-control" name="email" placeholder="Email" required><br>
+<input type="text" class="form-control" name="phno" placeholder="Phone" pattern="[0-9]{10}" required><br>
+<select name="district" class="form-control">
+      <option value="Trivandrum">Trivandrum</option>
+      <option value="Kollam">Kollam</option>
+      <option value="Pathanamthitta">Pathanamthitta</option>
+      <option value="Alapuzha">Alapuzha</option>
+      <option value="Kottayam">Kottayam</option>
+      <option value="Idukki">Idukki</option>
+      <option value="Ernakulam">Ernakulam</option>
+      <option value="Trichur">Trichur</option>
+      <option value="Palakad">Palakad</option>
+      <option value="Malapuram">Malapuram</option>
+</select><br>
+<input type="text" class="form-control" name="uname" placeholder="Username" required><br>
+<input type="Password" class="form-control" name="pass" placeholder="Password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required><br>
+<input type="submit" name="sub" value="Submit" class="btn">
+</form>
+<br>
+<br>
+{% endblock %}

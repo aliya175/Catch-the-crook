@@ -1,0 +1,61 @@
+{%  extends 'userheader.html' %}
+{% block content1 %}
+<html>
+    <style>
+    .btn{
+        background-color:green;
+        color:white;
+        margin-left:60%;
+        }
+    </style>  
+        {% if messages %}
+        {% for msg in messages %}
+        <script>alert('{{msg}}');</script>
+        {% endfor %}
+        {% endif %}
+      
+    <br>
+    <head><h2 align="center" style="color: brown;">Add Missing Item</h2></head>
+    <style>
+
+        .btn{
+        background-color:green;
+        color:white;
+        }
+        .form-control{
+        width:300px;
+        background-color:black;
+        color:white;
+        
+        }
+        .first{
+          display:flex;
+          margin-left:40%;
+        }
+        
+        </style>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+
+<tr><td> Station:</td><td><select name="dis">
+
+    <option>--Select Station--</option>
+    {% for d in data %}
+    <option value={{d.id}}>{{d.name}}</option>
+    {% endfor %}
+</select></td></tr>
+<tr><td> Missing Item:</td><td><input type="text" name="mitem"></td></tr>
+<tr><td> Missing Date:</td><td><input type="date" name="mdate"></td></tr>
+<tr><td> Description:</td><td><input type="text" name="mdesc"></td></tr>
+<tr><td> Place of Missing:</td><td><input type="text" name="place"></td></tr>
+<tr><td> Photo:</td><td><input type="file" name="img"></td></tr>
+<tr><td><input type="submit" name="sub" class="btn" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

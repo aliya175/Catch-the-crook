@@ -1,0 +1,48 @@
+{%  extends 'stationheader.html' %}
+{% block content1 %}
+<html>
+    <br>
+    <head><h2 align="center" style="color: brown;">Add Crime</h2></head>
+
+    <style>
+
+        .btn{
+        background-color:green;
+        color:white;
+        }
+        .form-control{
+        width:300px;
+        background-color:black;
+        color:white;
+        
+        }
+        .first{
+          display:flex;
+          margin-left:40%;
+        }
+        
+        </style>
+    <body>
+
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+
+<tr><td> Crime Type:</td><td><input type="text" name="ctype" class="form-control"></td></tr>
+<tr><td> Crime Description:</td><td><input type="text" name="cdesc" class="form-control"></td></tr>
+<tr><td> Crime Date:</td><td><input type="date" name="date1" class="form-control"></td></tr>
+<tr><td> Crime Location:</td><td><input type="text" name="cloc" class="form-control"></td></tr>
+<tr><td> IPC Section:</td><td><input type="text" name="ipc" class="form-control"></td></tr>
+
+<tr><td> Victim Name:</td><td><input type="text" name="vname" class="form-control"></td></tr>
+<tr><td> Suspect Name:</td><td><input type="text" name="sname" class="form-control"></td></tr>
+<tr><td>File Upload</td><td><input type="file" name="f1"  class="form-control"></td></tr>
+
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

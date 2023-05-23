@@ -1,0 +1,47 @@
+{%  extends 'commonheader.html' %}
+{% block content1 %}
+<style>
+    .form-control{
+
+width:300px;
+background-color:black;
+color:white;
+}
+input{
+
+margin-left:40%;
+margin-top:10px;
+
+}
+.btn{
+
+background-color:green;
+color:white;
+margin-left:48%;
+}
+</style>
+
+    <br>
+    {% if messages %}
+    {% for msg in messages %}
+    <script>alert('{{msg}}');</script>
+    {% endfor %}
+    {% endif %}
+    <body>
+    <h2 align="center" style="color: brown;">User Registration</h2>
+<form method="POST">
+     {% csrf_token %}
+<br>
+<input type="text" class="form-control" name="name" placeholder="Name" required><br>
+<input type="text" class="form-control" name="addr" placeholder="Address" required><br>
+<input type="text" class="form-control" name="email" placeholder="Email" required><br>
+<input type="text" class="form-control" name="phno" placeholder="Phone" pattern="[0-9]{10}" required><br>
+<input type="text" class="form-control" name="vid" placeholder="Voterid" min="8" max="8" required><br>
+<input type="text" class="form-control" name="aid" placeholder="Aadhar" pattern="[0-9]{12}" required><br>
+<input type="text" class="form-control" name="uname" placeholder="Username" required><br>
+<input type="Password" class="form-control" name="pass" placeholder="Password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required><br>
+<input type="submit" name="sub" value="Submit" class="btn">
+</form>
+<br>
+<br>
+{% endblock %}

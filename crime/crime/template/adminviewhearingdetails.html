@@ -1,0 +1,63 @@
+{% extends 'adminheader.html' %}
+{% block content1 %}
+<form method="POST">
+{% csrf_token%}
+<br>
+<br>
+<h2 align="center" style="color:brown">Hearings</h2>
+<br>
+<style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+
+{% if messages %}
+{% for msg in messages %}
+<script>alert('{{msg}}');</script>
+{% endfor %}
+{% endif %}            
+<table class="customers">
+<tr>
+    <th>Firid</th>
+    <th>Hearing on</th>
+    <th colspan="3">Updates</th>
+</tr>
+    
+    {% for x in data %}
+    <tr>
+        
+        <td>{{x.firid.id}}</td>
+        <td>{{x.heardate}}</td>
+        <td>{{x.updates}}</td>
+        <td><a href='/adminviewfirdetails?id={{x.firid.id}}'>View Fir</a></td>
+        {% if x.id in d %}
+        <td><a href='/adminviewpunishment?id={{x.id}}'>View Punishment</a></td>
+        {% endif %}
+        </tr> 
+    {% endfor %} 
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</form>
+{% endblock %}
